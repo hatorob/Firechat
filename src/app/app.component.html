@@ -7,10 +7,17 @@
 
 <div class="container main-container">
     <h1>FireChat</h1>
-    <app-login></app-login>
 
-    <!-- <div class="chat-window">
+    <div class="col-md-12 text-end" *ngIf="cs.usuario.uid">
+        <button class="btn btn-outline-danger" (click)="cs.logout();">
+            Salir
+        </button>
+    </div>
+
+    <app-login *ngIf="!cs.usuario.uid"></app-login>
+
+    <div class="chat-window" *ngIf="cs.usuario.uid">
         <app-chat></app-chat>
-    </div> -->
+    </div>
 
 </div>

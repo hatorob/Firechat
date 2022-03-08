@@ -28,17 +28,23 @@ export class ChatService {
           }
           this.usuario.nombre = user.displayName;
           this.usuario.uid = user.uid;
-          
+
       });            
 
   }
 
 
   login( proveedor: string ) {
-    firebase.auth().signInWithPopup( new firebase.auth.GoogleAuthProvider());
+
+    if( proveedor === 'google') {
+      firebase.auth().signInWithPopup( new firebase.auth.GoogleAuthProvider());
+    } else {
+      firebase.auth().signInWithPopup( new firebase.auth.TwitterAuthProvider());
+    }
   }
 
   logout() {
+    this.usuario = {};
     firebase.auth().signOut();
   }
   
