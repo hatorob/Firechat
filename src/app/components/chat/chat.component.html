@@ -13,8 +13,8 @@
         <p>Saludos Fernando</p>
     </div> -->
 
-    <div class="text-end" *ngFor="let chat of cs.chats">
-        <span class="badge bg-danger">María</span>
+    <div *ngFor="let chat of cs.chats" [ngClass]="{ 'text-end': cs.usuario.uid == chat.uid }">
+        <span class="badge" [ngClass]="{ 'bg-danger': cs.usuario.uid == chat.uid, 'bg-primary': cs.usuario.uid != chat.uid }"> {{ chat.nombre }} </span> <span class="badge bg-linght text-dark"> {{ chat.fecha | date: 'short'}} </span>
         <p> {{chat.mensaje}} </p>
     </div>
 
